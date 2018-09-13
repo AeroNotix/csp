@@ -23,9 +23,6 @@
      (alexandria:removef ,place elt)
      elt))
 
-(defun channel-being-read-p (channel)
-  (not (null (channel-readers channel))))
-
 (macrolet ((define-channel-state-macro (name place)
              `(defmacro ,name (channel condition-variable &body body)
                 `(unwind-protect
