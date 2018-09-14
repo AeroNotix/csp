@@ -22,3 +22,13 @@
                     :name "recv thread")
     (send c :hello-from-channel)
     (recv c)))
+
+(defun multiple-receivers-multiple-senders ()
+  (let ((c (make-instance 'channel)))
+    (bt:make-thread (lambda ()
+                        (send c :hello-thread1))
+                    :name "send thread1")
+    (bt:make-thread (lambda ()
+                      (send c :hello-thread2))
+                    :name "send thread2")
+    (list (recv c) (recv c))))
