@@ -60,7 +60,8 @@
           (loop while (null channel-writers)
              if block-p
              do (bt:condition-wait when-sender-available-notify lock)
-             else do (return-from recv nil))
+             else
+             do (return-from recv nil))
           (let ((writer (random-removef channel-writers)))
             (condition-notify writer)
             (bt:condition-wait when-sender-available-notify lock)
