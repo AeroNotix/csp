@@ -4,6 +4,7 @@
   :description "Communicating Sequential Processes"
   :license "BSD"
   :depends-on (:bordeaux-threads
+               :stmx
                :alexandria)
   :components ((:file "csp"))
   :serial t)
